@@ -1,0 +1,23 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.29.40 esxi.example.com esxi
+192.168.29.41 vcenter.example.com vcenter
+
+192.168.29.49 helper.ocp4.example.com helper
+
+192.168.29.49 lb.ocp4.example.com lb
+192.168.29.49 apps.ocp4.example.com
+
+192.168.29.180 bootstrap.ocp4.example.com bootstrap-01
+192.168.29.181 master0.ocp4.example.com master0
+192.168.29.182 master1.ocp4.example.com master1
+192.168.29.183 master2.ocp4.example.com master2
+
+192.168.29.191 worker0.ocp4.example.com worker0
+192.168.29.192 worker1.ocp4.example.com worker1	
+192.168.29.193 worker2.ocp4.example.com worker2
+
+192.168.29.49 api.ocp4.example.com
+
+192.168.29.49 api-int.ocp4.example.com
+

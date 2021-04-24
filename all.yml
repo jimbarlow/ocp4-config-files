@@ -1,0 +1,67 @@
+helper_vm_ip: 192.168.29.49
+bootstrap_ignition_url: "http://{{helper_vm_ip}}:8080/ignition/bootstrap.ign"
+config:
+  provider: vsphere
+  base_domain: example.com
+  cluster_name: ocp4
+  fips: false
+  isolationMode: NetworkPolicy
+  installer_ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  pull_secret:
+vcenter:
+  ip: 192.168.29.41
+  datastore: 860-2G
+  network: VM Network
+  service_account_username: administrator@vsphere.local
+  service_account_password: ''
+  admin_username: administrator@vsphere.local
+  admin_password: ''
+  datacenter: Datacenter
+  folder_absolute_path:
+  vm_power_state: poweredon
+  template_name: rhcos-vmware
+download:
+  clients_url: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.23
+  dependencies_url: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.6/latest
+  govc: https://github.com/vmware/govmomi/releases/download/v0.23.0/govc_linux_amd64.gz
+bootstrap_vms:
+  - { name: "bootstrap", macaddr: "00:50:56:a8:aa:a1", ipaddr: "192.168.29.180", cpu: 4, ram: 16384}
+master_vms:
+  - { name: "master0", macaddr: "00:50:56:a8:aa:a2", ipaddr: "192.168.29.181", cpu: 4, ram: 16384}
+  - { name: "master1", macaddr: "00:50:56:a8:aa:a3", ipaddr: "192.168.29.182", cpu: 4, ram: 16384}
+  - { name: "master2", macaddr: "00:50:56:a8:aa:a4", ipaddr: "192.168.29.183", cpu: 4, ram: 16384}
+worker_vms:
+  - { name: "worker0", macaddr: "00:50:56:a8:aa:a6", ipaddr: "192.168.29.191", cpu: 4, ram: 14000}
+  - { name: "worker1", macaddr: "00:50:56:a8:aa:a7", ipaddr: "192.168.29.192", cpu: 4, ram: 14000}
+  - { name: "worker2", macaddr: "00:50:56:a8:aa:a8", ipaddr: "192.168.29.193", cpu: 4, ram: 14000}
+static_ip:
+  gateway: 192.168.29.1
+  netmask: 255.255.255.0
+  dns: "{{ helper_vm_ip }}"
+  network_interface_name: ens192
+proxy:
+  enabled: false
+  http_proxy: 
+  https_proxy:
+  no_proxy:
+  cert_content: |
+    -----BEGIN CERTIFICATE-----
+        <certficate content>
+    -----END CERTIFICATE-----
+registry:
+  enabled: false
+#  product_repo: openshift-release-dev
+#  product_release_name: ocp-release
+#  product_release_version: 4.6.23-x86_64
+#  username: ansible
+#  password: ansible
+#  email: user@awesome.org
+#  cert_content:
+#  host: registry.ocp4.example.com
+#  port: 5000
+#  repo: ocp4/openshift4
+ntp:
+  custom: false
+  ntp_server_list:
+    - 0.rhel.pool.ntp.org
+    - 1.rhel.pool.ntp.org
