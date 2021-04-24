@@ -21,7 +21,7 @@ vcenter:
   vm_power_state: poweredon
   template_name: rhcos-vmware
 download:
-  clients_url: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.23
+  clients_url: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.25
   dependencies_url: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.6/latest
   govc: https://github.com/vmware/govmomi/releases/download/v0.23.0/govc_linux_amd64.gz
 bootstrap_vms:
@@ -31,9 +31,9 @@ master_vms:
   - { name: "master1", macaddr: "00:50:56:a8:aa:a3", ipaddr: "192.168.29.182", cpu: 4, ram: 16384}
   - { name: "master2", macaddr: "00:50:56:a8:aa:a4", ipaddr: "192.168.29.183", cpu: 4, ram: 16384}
 worker_vms:
-  - { name: "worker0", macaddr: "00:50:56:a8:aa:a6", ipaddr: "192.168.29.191", cpu: 4, ram: 14000}
-  - { name: "worker1", macaddr: "00:50:56:a8:aa:a7", ipaddr: "192.168.29.192", cpu: 4, ram: 14000}
-  - { name: "worker2", macaddr: "00:50:56:a8:aa:a8", ipaddr: "192.168.29.193", cpu: 4, ram: 14000}
+  - { name: "worker0", macaddr: "00:50:56:a8:aa:a6", ipaddr: "192.168.29.191", cpu: 4, ram: 16384
+  - { name: "worker1", macaddr: "00:50:56:a8:aa:a7", ipaddr: "192.168.29.192", cpu: 4, ram: 16384}
+  - { name: "worker2", macaddr: "00:50:56:a8:aa:a8", ipaddr: "192.168.29.193", cpu: 4, ram: 16384}
 static_ip:
   gateway: 192.168.29.1
   netmask: 255.255.255.0
