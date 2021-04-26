@@ -1,0 +1,38 @@
+- name: set my firewall rules
+  hosts: 192.168.29.49
+  become: true
+  vars:
+    ports:
+    - 67/udp
+    - 53/tcp
+    - 53/udp
+    - 443/tcp
+    - 80/tcp
+    - 8080/tcp
+    - 6443/tcp
+    - 6443/udp
+    - 22623/tcp
+    - 22623/udp
+    - 9000/tcp
+    - 69/udp
+    - 111/tcp
+    - 2049/tcp
+    - 5000/tcp
+    - 20048/tcp
+    - 50825/tcp
+    - 53248/tcp
+  tasks:
+       
+  - name: ports to enable in the firewall
+    firewalld:
+      port: "{{ item }}"
+      permanent: true
+      state: enabled
+    loop: "{{ ports }}"
+
+  - name: restart firewall
+    service:
+      name: firewalld
+      enabled: true
+      state: restarted
+       
