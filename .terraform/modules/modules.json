@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"master","Source":"../../modules/rhcos-static","Dir":""},{"Key":"worker","Source":"../../modules/rhcos-static","Dir":""},{"Key":"","Source":"","Dir":"."},{"Key":"bootstrap","Source":"../../modules/rhcos-static","Dir":""}]}
