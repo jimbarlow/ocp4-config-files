@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: image-registry-storage
+  name: image-truenas-registry-storage
   namespace: openshift-image-registry
 spec:
   accessModes:
